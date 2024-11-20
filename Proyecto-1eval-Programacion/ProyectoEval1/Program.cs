@@ -16,15 +16,13 @@
 
                 Console.WriteLine("Ejercicio 3: Hacer una función que se le pasa un dni y devuelve si el formato es correcto o no.");
                 Console.WriteLine(Validators.IsValidDNI("48620440-G"));
-                // Hacer validate DNI como si el DNI en si es válido?????? si da tiempo lo hago como extra.
 
                 Console.WriteLine("Ejercicio 4: Hacer una función que se le pase un correo electrónico y devuelva si es correcto o no.");
-                Console.WriteLine(Validators.IsValidEmail("dm@dm.es"));
+                Console.WriteLine(Validators.IsValidEmail("dm@dmsd.es"));
 
                 Console.WriteLine("Ejercicio 5: Hacer una función a la que se le pase un string y un booleano. ");
                 Console.WriteLine("Esta función devolverá ese string en mayúsculas o minúsculas dependiendo de ese booleano.");
-                // Solucionar conversion parcial.
-                string s = Utils.ChangeCaptionString("HOla!ñx", true);
+                string s = Utils.ChangeCaptionString("HOla!ñx", false);
                 Console.WriteLine(s);
 
                 Console.WriteLine("Ejercicio 6: Hacer una función que dados un año, un mes, un día una hora, unos minutos y unos\r\nsegundos, devuelva un string con este formato:");

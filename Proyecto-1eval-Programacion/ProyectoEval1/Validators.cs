@@ -15,33 +15,41 @@ namespace ProyectoEval1
         {
             if (dni == null)
                 return false;
-            if (dni.Length < 10 || dni.Length > 10)
+            if (dni.Length != 10)
                 return false;
+            if (dni[8] != '-')
+                return false;
+            if (!IsValidLetter(dni[dni.Length -1]))
+                return false;
+            char letter = Utils.ToUpper(dni[dni.Length - 1]);
 
+            int DNINumber = 0;
+            int mult = 10000000;
             for (int i = 0; i < dni.Length - 1; i++)
             {
-                char c;
-                c = dni[i];
+                char c = dni[i];
                 if (i <= 7)
                 {
                     if (!IsValidNumberInChar(c))
                         return false;
+                    DNINumber += CalcCharToNumber(c) * mult;
+                    mult /= 10;
                 }
 
-                if (i == 8)
-                {
-                    if (c != 45)
-                        return false;
-                }
-
-                if (i == 9)
-                {
-                    if (!IsValidLetter(c))
-                        return false;
-                }
             }
-            return true;
+            return CheckDNI(DNINumber, dni[dni.Length -1]);
         }
+
+
+        private static bool CheckDNI(int dni, char letter)
+        {
+            int module = dni % 23;
+            string validLetters = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+            
+            return letter == validLetters[module];
+        }
+
 
 
         /// <summary>
@@ -52,16 +60,19 @@ namespace ProyectoEval1
         /// <returns>bool</returns>
         public static bool IsValidCharEmail(char c)
         {
-            if (c == 46)
+            if (c == '.' || c == '_' || c == '-' || c == '+')
                 return true;
-            if (c >= 48 && c <= 57)
+            if (c == '@')
                 return true;
-            if (c >= 64 && c <= 90)
+            if ('0' <= c && c <= '9')
                 return true;
-            if (c >= 97 && c <= 122)
+            if ('A' <= c && c <= 'Z')
+                return true;
+            if ('a' <= c && c <= 'z')
                 return true;
             return false;
         }
+
 
 
         /// <summary>
@@ -71,9 +82,7 @@ namespace ProyectoEval1
         /// <returns>bool</returns>
         public static bool IsValidNumberInChar(char c)
         {
-            if (c >= 48 && c <= 57)
-                return true;
-            return false;
+            return '0' <= c && c <= '9';
         }
 
         /// <summary>
@@ -83,17 +92,17 @@ namespace ProyectoEval1
         /// <returns>bool</returns>
         public static bool IsCapitalLetter(char c)
         {
-            if (c >= 65 && c <= 90)
-                return true;
-            return false;
+            return 'A' <= c && c <= 'Z';
         }
 
-
+        /// <summary>
+        /// Confirma si el caracter que se introduce es válido.
+        /// </summary>
+        /// <param name="c">char</param>
+        /// <returns>bool</returns>
         public static bool IsValidLetter(char c)
         {
-            if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-                return true;
-            return false;
+            return ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z');
         }
 
         /// <summary>
@@ -103,7 +112,7 @@ namespace ProyectoEval1
         /// <returns>int</returns>
         public static int CalcCharToNumber(char c)
         {
-            return c - 48;
+            return c - '0';
         }
 
 
@@ -114,6 +123,8 @@ namespace ProyectoEval1
         /// <returns>int</returns>
         private static int CountAt(string email)
         {
+
+            // Comprobar null???
             int count = 0;
             for (int i = 0; i < email.Length; i++)
             {
@@ -160,12 +171,13 @@ namespace ProyectoEval1
             // Se utiliza email.Length - 5
             // Desde el @, al menos debería de contener 2 dígitos del dominio, más 1 dígito de punto,
             // más 2 dígitos del país.
-            if (IndexOfAt < 1 || IndexOfAt > email.Length - 5)
+
+            if (IndexOfAt < 1 || email.Length - IndexOfAt <= 5)
                 return false;
 
             int IndexDot = 0;
-            bool FindArroba = false;
-            bool FindDomain = false;
+            bool FoundAt = false;
+            bool FoundDomain = false;
             for (int i = 0; i < email.Length; i++)
             {
                 if (!IsValidCharEmail(email[i]))
@@ -173,24 +185,28 @@ namespace ProyectoEval1
 
                 if (i == IndexOfAt)
                 {
-                    FindArroba = true;
+                    FoundAt = true;
                     continue;
                 }
 
+                if (email[i] == '.' && email[i + 1] == '.')
+                    return false;
+
                 // Despues de encontrar el @, localizar el punto. Si su distancia es de 1 carácter entre medias, FALSE
-                if (FindArroba && !FindDomain)
+                if (FoundAt && !FoundDomain)
                 {
                     if (i >= IndexOfAt + 2 && email[i] == '.')
                     {
-                        FindDomain = true;
+                        FoundDomain = true;
                         IndexDot = i;
+                        continue;
                     }
                 }
 
-                if (FindDomain)
+                if (FoundDomain)
                 {
-                    if (email.Length - IndexDot > 2) // ¿Comprobar si hay dos puntos seguidos?
-                        return true;
+                    if (email.Length - IndexDot <= 2)
+                        return false;
                 }
             }
 

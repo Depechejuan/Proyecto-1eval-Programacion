@@ -1,6 +1,4 @@
 ﻿
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace ProyectoEval1
 {
     internal class Utils
@@ -36,38 +34,43 @@ namespace ProyectoEval1
             for (int i = 0; i < aux.Length; i++)
             {
                 char c = aux[i];
-
-                bool capital = Validators.IsCapitalLetter(c);
                 bool symbol = !(Validators.IsValidLetter(c));
+
+                // hacer un toLower propio!!!!
+
                 if (symbol)
                 {
                     s += (char)(c);
                     continue;
                 }
+
                 if (cap)
                 {
-                    if (capital)
-                    {
-                        s += (char)(c);
-                        continue;
-                    }
-                    s += (char)(c - 32);
+                    s += ToUpper(c);
                 }
                 if (!cap)
                 {
-                    if (!capital)
-                    {
-                        s += (char)(c);
-                        continue;
-                    }
-                    s += (char)(c + 32);
+                    s += ToLower(c);
                 }
             }
             return s;
         }
 
+        public static char ToLower(char c)
+        {
+            if (Validators.IsCapitalLetter(c))
+                return (char)(c + 32);
+            return c;
+        }
 
-        public static int StringToInt(string s)
+        public static char ToUpper(char c)
+        {
+            if (Validators.IsCapitalLetter(c))
+                return c;
+            return (char)(c - 32);
+        }
+
+        public static int StringToInt(string s) // to int
         {
             if (s == null)
                 throw new Exception("No puedes introducir un Null.");
@@ -81,7 +84,7 @@ namespace ProyectoEval1
                 if (!Validators.IsValidNumberInChar(c))
                     throw new Exception("Has introducido un carácter que NO es un número. Vuelve a intentarlo");
 
-                n += Validators.CalcCharToNumber(c) * mult;
+                n += Validators.CalcCharToNumber(c) * mult; // CharToNumber
 
                 mult *= 10;
             }
