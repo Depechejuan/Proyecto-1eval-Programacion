@@ -24,7 +24,6 @@ namespace ProyectoEval1
         /// <param name="s">string / bool</param>
         /// <returns>Devuelve el mismo string modificado</returns>
         /// <exception cref="Exception">string null == exception // Un carácter no válido (Sólo letras sin tildes u otros simbolos) == exception</exception>
-
         public static string ChangeCaptionString(string s, bool cap)
         {
             if (s == null)
@@ -35,8 +34,6 @@ namespace ProyectoEval1
             {
                 char c = aux[i];
                 bool symbol = !(Validators.IsValidLetter(c));
-
-                // hacer un toLower propio!!!!
 
                 if (symbol)
                 {
@@ -56,6 +53,11 @@ namespace ProyectoEval1
             return s;
         }
 
+        /// <summary>
+        /// Función dedicada a convertir un carácter (Letra del abecedario) a minúscula
+        /// </summary>
+        /// <param name="c">Char</param>
+        /// <returns>Char modificado si cumple las condiciones, o el mismo char sin modificar.</returns>
         public static char ToLower(char c)
         {
             if (Validators.IsCapitalLetter(c))
@@ -63,6 +65,11 @@ namespace ProyectoEval1
             return c;
         }
 
+        /// <summary>
+        /// Función dedicada a convertir un carácter (Letra del abecedario) a mayúscula
+        /// </summary>
+        /// <param name="c">Char</param>
+        /// <returns>Char modificado si cumple las condiciones, o el mismo char sin modificar.</returns>
         public static char ToUpper(char c)
         {
             if (Validators.IsCapitalLetter(c))
@@ -70,6 +77,13 @@ namespace ProyectoEval1
             return (char)(c - 32);
         }
 
+
+        /// <summary>
+        /// Convierte un String a números INT
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static int StringToInt(string s) // to int
         {
             if (s == null)
@@ -84,7 +98,7 @@ namespace ProyectoEval1
                 if (!Validators.IsValidNumberInChar(c))
                     throw new Exception("Has introducido un carácter que NO es un número. Vuelve a intentarlo");
 
-                n += Validators.CalcCharToNumber(c) * mult; // CharToNumber
+                n += Validators.CharToNumber(c) * mult;
 
                 mult *= 10;
             }

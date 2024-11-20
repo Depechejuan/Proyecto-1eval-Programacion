@@ -31,7 +31,7 @@ namespace ProyectoEval1
                 if (!Validators.IsValidNumberInChar(c))
                     throw new Exception("Has introducido un carácter que NO es un número. Vuelve a intentarlo");
 
-                number += Validators.CalcCharToNumber(c) * mult;
+                number += Validators.CharToNumber(c) * mult;
 
                 mult *= 10;
                 

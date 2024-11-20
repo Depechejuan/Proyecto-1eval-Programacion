@@ -32,7 +32,7 @@ namespace ProyectoEval1
                 {
                     if (!IsValidNumberInChar(c))
                         return false;
-                    DNINumber += CalcCharToNumber(c) * mult;
+                    DNINumber += CharToNumber(c) * mult;
                     mult /= 10;
                 }
 
@@ -40,13 +40,16 @@ namespace ProyectoEval1
             return CheckDNI(DNINumber, dni[dni.Length -1]);
         }
 
-
+        /// <summary>
+        /// Esta función comprueba que el número introducido en el DNI y su letra son un DNI real.
+        /// </summary>
+        /// <param name="dni">INT - Número a operar</param>
+        /// <param name="letter">CHAR - Letra del DNI</param>
+        /// <returns></returns>
         private static bool CheckDNI(int dni, char letter)
         {
             int module = dni % 23;
             string validLetters = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-            
             return letter == validLetters[module];
         }
 
@@ -110,7 +113,7 @@ namespace ProyectoEval1
         /// </summary>
         /// <param name="c">Char</param>
         /// <returns>int</returns>
-        public static int CalcCharToNumber(char c)
+        public static int CharToNumber(char c)
         {
             return c - '0';
         }
@@ -123,8 +126,8 @@ namespace ProyectoEval1
         /// <returns>int</returns>
         private static int CountAt(string email)
         {
-
-            // Comprobar null???
+            if (email == null)
+                return -1;
             int count = 0;
             for (int i = 0; i < email.Length; i++)
             {
@@ -192,7 +195,6 @@ namespace ProyectoEval1
                 if (email[i] == '.' && email[i + 1] == '.')
                     return false;
 
-                // Despues de encontrar el @, localizar el punto. Si su distancia es de 1 carácter entre medias, FALSE
                 if (FoundAt && !FoundDomain)
                 {
                     if (i >= IndexOfAt + 2 && email[i] == '.')
