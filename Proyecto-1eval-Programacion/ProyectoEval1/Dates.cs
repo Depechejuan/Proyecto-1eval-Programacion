@@ -80,10 +80,17 @@
             return $"{year}/{month}/{day} - {hour}:{minute}:{second}";
         }
 
+
+        /// <summary>
+        /// Esta función separa a varios INT una cadena de texto con un formato determinado 
+        /// </summary>
+        /// <param name="date">fecha en STRING siguiendo el formato "YYYY/MM/DD - hh:mm:ss"</param>
+        /// <returns>int year, int month, int day, int hour, int minute, int second</returns>
+        /// <exception cref="Exception"></exception>
         public static (int, int, int, int, int, int) ConvertStringToDate(string date)
         {
             if (date == null)
-                throw new Exception("No puedes introducir un NULL");
+                return (int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue)
 
             string d = "";
 
