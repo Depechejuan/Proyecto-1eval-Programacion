@@ -5,7 +5,6 @@ namespace ProyectoEval1
 {
     public class Hash
     {
-
         /// <summary>
         /// Esta función recibe un número como un string.
         /// En caso de contener un null o algo que no sea un número, se devolverá una excepción
@@ -53,12 +52,10 @@ namespace ProyectoEval1
         {
             if (l == null)
                 return l;
-            while (l.Count < 43)
-            {
-                for (int i = 11; i < int.MaxValue; i++)
+
+            for (int i = 11; l.Count < 43; i++)
                 if (IsPrime(i))
                     l.Add(i);
-            }
             return l;
         }
 
@@ -84,21 +81,21 @@ namespace ProyectoEval1
                 throw new Exception("Para hashear necesitas al menos 8 caracteres o menos de 20");
 
             List<int> prime = new List<int>();
-            GetPrimes(prime);
+            prime = GetPrimes(prime);
 
             // Coger, segun el valor del string, una posición de número primo.
             //int IndexPrime = GetIndexPrime(s, prime);
 
-            long index = StringToLong(s);
+            long index = s.Length;
             int IntIndex = (int)index;
 
-            char c;
+            int HashLetter = 0;
             long hash = 1;
             for (int i = 0; i < s.Length; i++)
             {
-                c = s[i];
-                hash = (hash * prime[IntIndex]) + c;
-                // NumHash += (NumHash * LastPrime) + c;
+                HashLetter += s[i] - 0;
+                hash = (hash * prime[IntIndex]) + HashLetter;
+                hash %= prime[IntIndex]* prime[IntIndex];
             }
             return hash;
         }

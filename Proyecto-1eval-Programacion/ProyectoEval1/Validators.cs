@@ -88,6 +88,7 @@ namespace ProyectoEval1
             return false;
         }
 
+
         public static bool IsValidLetter(char c)
         {
             if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
@@ -183,13 +184,14 @@ namespace ProyectoEval1
                     {
                         FindDomain = true;
                         IndexDot = i;
-                        continue;
                     }
                 }
 
-                // solucionar el final. Si encuentras el punto y 
-                if (FindDomain && email.Length - IndexDot <= 2)
-                    return false;
+                if (FindDomain)
+                {
+                    if (email.Length - IndexDot > 2) // ¿Comprobar si hay dos puntos seguidos?
+                        return true;
+                }
             }
 
             return true;
