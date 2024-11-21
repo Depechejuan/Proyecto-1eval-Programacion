@@ -87,7 +87,7 @@ namespace ProyectoEval1
         public static int StringToInt(string s) // to int
         {
             if (s == null)
-                throw new Exception("No puedes introducir un Null.");
+                return int.MinValue;
 
             int n = 0;
             int mult = 1;
@@ -96,7 +96,7 @@ namespace ProyectoEval1
                 char c = s[i];
 
                 if (!Validators.IsValidNumberInChar(c))
-                    throw new Exception("Has introducido un carácter que NO es un número. Vuelve a intentarlo");
+                    return int.MinValue;
 
                 n += Validators.CharToNumber(c) * mult;
 
