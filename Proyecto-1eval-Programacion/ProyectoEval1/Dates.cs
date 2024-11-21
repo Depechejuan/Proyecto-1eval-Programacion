@@ -90,7 +90,7 @@
         public static (int, int, int, int, int, int) ConvertStringToDate(string date)
         {
             if (date == null)
-                return (int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue)
+                return (int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue);
 
             string d = "";
 
