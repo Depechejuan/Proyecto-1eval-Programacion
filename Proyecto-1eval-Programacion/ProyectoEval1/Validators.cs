@@ -40,6 +40,9 @@ namespace ProyectoEval1
             return CheckDNI(DNINumber, dni[dni.Length -1]);
         }
 
+
+
+
         /// <summary>
         /// Esta función comprueba que el número introducido en el DNI y su letra son un DNI real.
         /// </summary>
@@ -78,6 +81,7 @@ namespace ProyectoEval1
 
 
 
+
         /// <summary>
         /// Valida si el CHAR es un valor numérico.
         /// </summary>
@@ -87,6 +91,9 @@ namespace ProyectoEval1
         {
             return '0' <= c && c <= '9';
         }
+
+
+
 
         /// <summary>
         /// Confirma si el caracter que se introduce es mayuscula o minuscula.
@@ -108,6 +115,9 @@ namespace ProyectoEval1
             return ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z');
         }
 
+
+
+
         /// <summary>
         /// Esta función calcula el valor numérico del "char". El char 48 es el número 0.
         /// </summary>
@@ -117,6 +127,9 @@ namespace ProyectoEval1
         {
             return c - '0';
         }
+
+
+
 
 
         /// <summary>
@@ -137,6 +150,9 @@ namespace ProyectoEval1
             return count;
         }
 
+
+
+
         /// <summary>
         /// Esta función busca el carácter '@' en el email, y devuelve su posición
         /// </summary>
@@ -151,6 +167,8 @@ namespace ProyectoEval1
             }
             return -1;
         }
+
+
 
         /// <summary>
         /// Función para validar email.

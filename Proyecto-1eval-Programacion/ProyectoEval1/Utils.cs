@@ -3,19 +3,6 @@ namespace ProyectoEval1
 {
     internal class Utils
     {
-        public static void PrintList(List<int> list)
-        {
-
-            if (list == null)
-                Console.WriteLine("La lista está vacía");
-            for (int i = 0; i < list.Count -1; i++)
-            {
-                Console.WriteLine(list[i]);
-            }
-            Console.WriteLine(list.Count);
-        }
-
-
         /// <summary>
         /// Esta función cambia las letras de un string a todo mayúsculas o todo minúsculas.
         /// Si insertas en el slot del Booleano un "FALSE", todo el texto será en minúsculas
@@ -26,8 +13,8 @@ namespace ProyectoEval1
         /// <exception cref="Exception">string null == exception // Un carácter no válido (Sólo letras sin tildes u otros simbolos) == exception</exception>
         public static string ChangeCaptionString(string s, bool cap)
         {
-            if (s == null)
-                throw new Exception("No puedes pasar un string vacío");
+            if (s == null || s == "")
+                return "No se puede cambiar un string vacío o NULL";
             string aux = s;
             s = "";
             for (int i = 0; i < aux.Length; i++)
@@ -53,6 +40,8 @@ namespace ProyectoEval1
             return s;
         }
 
+
+
         /// <summary>
         /// Función dedicada a convertir un carácter (Letra del abecedario) a minúscula
         /// </summary>
@@ -65,6 +54,9 @@ namespace ProyectoEval1
             return c;
         }
 
+
+
+
         /// <summary>
         /// Función dedicada a convertir un carácter (Letra del abecedario) a mayúscula
         /// </summary>
@@ -76,6 +68,9 @@ namespace ProyectoEval1
                 return c;
             return (char)(c - 32);
         }
+
+
+
 
 
         /// <summary>

@@ -24,6 +24,9 @@
             return false;
         }
 
+
+
+
         /// <summary>
         /// Esta función confirma si la fecha introducida es válida o no, revisando que los datos introducidos estén en los valores esperados.
         /// Además, añade comprobaciones a los meses de 29/30/31 días, años bisiestos etc.
@@ -63,6 +66,10 @@
 
             return true;
         }
+
+
+
+
         /// <summary>
         /// Convierte una fecha a un string
         /// </summary>
@@ -79,6 +86,9 @@
                 return "El formato de fecha introducido no es correcto. Revisa si los valores introducidos son correctos, y si podría existir la fecha introducida";
             return $"{year}/{month}/{day} - {hour}:{minute}:{second}";
         }
+
+        
+
 
 
         /// <summary>
@@ -104,6 +114,14 @@
             return (year, month, day, hour, minute, second);
         }
 
+
+
+
+        /// <summary>
+        /// Conseguir el año dado un string con un formato de fecha YYYY/MM/DD - hh:mm:ss
+        /// </summary>
+        /// <param name="date">STRING</param>
+        /// <returns>INT (YYYY)</returns>
         private static int GetYearFromDateString(string date)
         {
             string YearString = "";
@@ -121,6 +139,13 @@
             return year;
         }
 
+
+
+        /// <summary>
+        /// Conseguir el mes dado un string con un formato de fecha YYYY/MM/DD - hh:mm:ss
+        /// </summary>
+        /// <param name="date">STRING</param>
+        /// <returns>INT (MM)</returns>
         private static int GetMonthFromDateString(string date)
         {
             string MonthDate = "";
@@ -147,6 +172,14 @@
             return month;
         }
 
+
+
+
+        /// <summary>
+        /// Conseguir el día dado un string con un formato de fecha YYYY/MM/DD - hh:mm:ss
+        /// </summary>
+        /// <param name="date">STRING</param>
+        /// <returns>INT (DD)</returns>
         private static int GetDayFromDateString(string date)
         {
             string DayDate = "";
@@ -171,6 +204,15 @@
             return day;
         }
 
+
+
+
+
+        /// <summary>
+        /// Conseguir la hora dado un string con un formato de fecha YYYY/MM/DD - hh:mm:ss
+        /// </summary>
+        /// <param name="date">STRING</param>
+        /// <returns>INT (hh)</returns>
         private static int GetHourFromDateString(string date)
         {
             string HourDate = "";
@@ -197,6 +239,14 @@
             return hour;
         }
 
+
+
+
+        /// <summary>
+        /// Conseguir los minutos dado un string con un formato de fecha YYYY/MM/DD - hh:mm:ss
+        /// </summary>
+        /// <param name="date">STRING</param>
+        /// <returns>INT (mm)</returns>
         private static int GetMinuteFromDateString(string date)
         {
             string MinuteDate = "";
@@ -217,6 +267,13 @@
             return minute;
         }
 
+
+
+        /// <summary>
+        /// Conseguir los segundos dado un string con un formato de fecha YYYY/MM/DD - hh:mm:ss
+        /// </summary>
+        /// <param name="date">STRING</param>
+        /// <returns>INT (ss)</returns>
         private static int GetSecondFromDateString(string date)
         {
             string SecondDate = "";

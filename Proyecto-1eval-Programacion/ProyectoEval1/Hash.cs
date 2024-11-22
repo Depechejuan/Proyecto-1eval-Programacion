@@ -39,6 +39,9 @@ namespace ProyectoEval1
             return number;
         }
 
+
+
+
         /// <summary>
         /// Esta función permite obtener los números primos desde el 11 hasta que tengamos 43 elementos.
         /// El motivo de obtener 40 elementos es que el hash máximo son 43 caracteres, es debido a
@@ -59,6 +62,14 @@ namespace ProyectoEval1
             return l;
         }
 
+
+
+
+        /// <summary>
+        /// Saber si un número es primo o no
+        /// </summary>
+        /// <param name="n">INT (Número a analizar)</param>
+        /// <returns>BOOL</returns>
         public static bool IsPrime(int n)
         {
             if (n < 2)
@@ -72,6 +83,14 @@ namespace ProyectoEval1
         }
 
 
+
+        /// <summary>
+        /// Creación del Hash de un string.
+        /// Genera una lista de números primos, y se hashea con un primo de esa lista.
+        /// El cálculo de los valores ASCII del string determina la posición de la lista de primos con la cual se generará la operación
+        /// </summary>
+        /// <param name="s">STRING</param>
+        /// <returns>LONG (Hash)</returns>
         public static long HashString(string s)
         {
             if (s == null)
@@ -79,10 +98,6 @@ namespace ProyectoEval1
            
             List<int> prime = new List<int>();
             prime = GetPrimes(prime);
-
-
-            // Coger, segun el valor del string, una posición de número primo.
-            //int IndexPrime = GetIndexPrime(s, prime);
 
             long index = s.Length;
 
@@ -101,7 +116,14 @@ namespace ProyectoEval1
             return hash;
         }
 
-        public static int AdjustIndex(long i)
+
+        /// <summary>
+        /// Ajusta el índice de "long" a "int", principalmente para evitar un out of range en la lista.
+        /// En caso de obtener un número mayor a 50, se harán unos cálculos para elegir otro y devolver un número óptimo.
+        /// </summary>
+        /// <param name="i">LONG</param>
+        /// <returns>INT</returns>
+        private static int AdjustIndex(long i)
         {
             long aux = 0;
             if (i >= int.MaxValue)
