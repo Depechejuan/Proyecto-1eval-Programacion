@@ -160,7 +160,7 @@ namespace ProyectoEval1
         /// <returns>bool</returns>
         public static bool IsValidEmail(string email)
         {
-            if (email == null)
+            if (email == null || email == "")
                 return false;
             int length = email.Length;
 
@@ -171,12 +171,16 @@ namespace ProyectoEval1
                 return false;
 
             int IndexOfAt = FindIndexOfAt(email);
-            // Se utiliza email.Length - 5
-            // Desde el @, al menos debería de contener 2 dígitos del dominio, más 1 dígito de punto,
-            // más 2 dígitos del país.
+
+            if (IndexOfAt == 0 || IndexOfAt == email.Length)
+                return false;
 
             if (IndexOfAt < 1 || email.Length - IndexOfAt <= 5)
                 return false;
+
+            if (email[IndexOfAt - 1] == '.' || email[IndexOfAt + 1] == '.')
+                return false;
+
 
             int IndexDot = 0;
             bool FoundAt = false;

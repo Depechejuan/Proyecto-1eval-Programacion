@@ -53,7 +53,7 @@ namespace ProyectoEval1
             if (l == null)
                 return l;
 
-            for (int i = 11; l.Count < 43; i++)
+            for (int i = 11; l.Count < 51; i++)
                 if (IsPrime(i))
                     l.Add(i);
             return l;
@@ -75,32 +75,44 @@ namespace ProyectoEval1
         public static long HashString(string s)
         {
             if (s == null)
-                throw new Exception("No se puede hashear un Null");
-
-            if (s.Length < 8 && s.Length > 40)
-                throw new Exception("Para hashear necesitas al menos 8 caracteres o menos de 20");
-
+                return long.MaxValue;
+           
             List<int> prime = new List<int>();
             prime = GetPrimes(prime);
+
 
             // Coger, segun el valor del string, una posición de número primo.
             //int IndexPrime = GetIndexPrime(s, prime);
 
             long index = s.Length;
-            int IntIndex = (int)index;
 
+
+            int IntIndex = AdjustIndex(index);
+
+            
             int HashLetter = 0;
             long hash = 1;
             for (int i = 0; i < s.Length; i++)
             {
                 HashLetter += s[i] - 0;
                 hash = (hash * prime[IntIndex]) + HashLetter;
-                hash %= prime[IntIndex]* prime[IntIndex];
+                
             }
             return hash;
         }
 
-
+        public static int AdjustIndex(long i)
+        {
+            long aux = 0;
+            if (i >= int.MaxValue)
+            {
+                aux = i & int.MaxValue;
+                return (int)aux;
+            }    
+            if (i > 50)
+                return (int)i % 10;
+            return (int)i;
+        }
         
     }
 }

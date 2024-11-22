@@ -12,8 +12,9 @@
 
                 Console.WriteLine(" ");
                 Console.WriteLine("Ejercicio 2: Hacer una función que calcule el hash de un string.");
-                Console.WriteLine("Convertir el carácter a su valor numérico (por ejemplo, usando su valor ASCII).");
-                Console.WriteLine(Hash.HashString("Javier!"));
+                Console.WriteLine(Hash.HashString("Jaliuygow qgypt8yot7wqo8iydsku yagdlodsiuglnaifyulewo9f gl9wyflw9eo8tl idknulf ,rqi78ut3ñlr3q8en ,bdi7utsaurytg. ird7fkugñ,s ifutgñw,inuglqe,8itglb qr9euhq938vt lieudf gdcuhef98tyr3q08yepugesljgyslodiguneqliuu glreiu yghlfd ud ldixuyhdlougfelgwaoiuwliu gliubdvier!"));
+                Console.WriteLine(long.MaxValue);
+
 
                 Console.WriteLine(" ");
                 Console.WriteLine("Ejercicio 3: Hacer una función que se le pasa un dni y devuelve si el formato es correcto o no.");
@@ -22,6 +23,20 @@
                 Console.WriteLine(" ");
                 Console.WriteLine("Ejercicio 4: Hacer una función que se le pase un correo electrónico y devuelva si es correcto o no.");
                 Console.WriteLine(Validators.IsValidEmail("dm@dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("dm@@dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("@dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("dmdmsd.es@"));
+                Console.WriteLine(Validators.IsValidEmail("dm@dmsd..es"));
+                Console.WriteLine(Validators.IsValidEmail("dm@dmsd.es."));
+                Console.WriteLine(Validators.IsValidEmail("dm@dmsd.es.."));
+                Console.WriteLine(Validators.IsValidEmail("dm.@dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("dm@.dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("dm.@.dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("d m@dmsd.es"));
+                Console.WriteLine(Validators.IsValidEmail("dm@d msd.es"));
+                Console.WriteLine(Validators.IsValidEmail("dm@d!msd.es"));
+                Console.WriteLine(Validators.IsValidEmail("@"));
+                Console.WriteLine(Validators.IsValidEmail(""));
 
                 Console.WriteLine(" ");
                 Console.WriteLine("Ejercicio 5: Hacer una función a la que se le pase un string y un booleano. ");
