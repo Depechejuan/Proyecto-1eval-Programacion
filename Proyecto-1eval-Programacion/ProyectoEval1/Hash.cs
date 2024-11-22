@@ -7,6 +7,7 @@ namespace ProyectoEval1
     {
         /// <summary>
         /// Esta función recibe un número como un string.
+        /// Si el primer dígito es un "-", convertirá el número a negativo. Acepta positivos, pero no genera ningún cambio.
         /// En caso de contener un null o algo que no sea un número, se devolverá una excepción
         /// </summary>
         /// <param name="s">string</param>
@@ -23,10 +24,13 @@ namespace ProyectoEval1
             for (int i = s.Length -1; i >= 0; i--)
             {
                 c = s[i];
-                if (i == 0 && c == 45)
+                if (i == 0 && c == '-')
                 {
                     return -number;
                 }
+
+                if (i == 0 && c == '+')
+                    return number;
 
                 if (!Validators.IsValidNumberInChar(c))
                     throw new Exception("Has introducido un carácter que NO es un número. Vuelve a intentarlo");

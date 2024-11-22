@@ -7,9 +7,10 @@ namespace ProyectoEval1
     {
         /// <summary>
         /// Esta función valida si el fomato de un DNI es el correcto.
-        /// Formato deseado: 11111111-B
+        /// Formato deseado: 11111111-A
+        /// No sólo valida el formato, sino si es un DNI real o no.
         /// </summary>
-        /// <param name="dni">Insertar DNI</param>
+        /// <param name="dni">STRING (DNI) FORMAT: 11111111-A</param>
         /// <returns>bool</returns>
         public static bool IsValidDNI(string dni)
         {
@@ -172,10 +173,14 @@ namespace ProyectoEval1
 
         /// <summary>
         /// Función para validar email.
-        /// Validación == letras@dominio.es
+        /// usuario@dominio.es
+        /// - La función busca las @ y sus posiciones para saber si está en buen lugar.
+        /// - También contempla los carácteres "." para que no existan juntos.
+        /// - Valida los carácteres válidos
+        /// - Valida que tenga al menos 2 carácteres depues del último .
         /// </summary>
-        /// <param name="email">string</param>
-        /// <returns>bool</returns>
+        /// <param name="email">STRING (email)</param>
+        /// <returns>BOOL</returns>
         public static bool IsValidEmail(string email)
         {
             if (email == null || email == "")
