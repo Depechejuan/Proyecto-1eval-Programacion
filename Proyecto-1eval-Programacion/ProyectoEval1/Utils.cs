@@ -14,7 +14,7 @@ namespace ProyectoEval1
         public static string ChangeCaptionString(string s, bool cap)
         {
             if (s == null || s == "")
-                return "No se puede cambiar un string vacío o NULL";
+                return "No se puede cambiar un string vacío o NULL"; // NUNCA HAGAS ESTO
             string aux = s;
             s = "";
             for (int i = 0; i < aux.Length; i++)
@@ -25,8 +25,8 @@ namespace ProyectoEval1
                 if (symbol)
                 {
                     s += (char)(c);
-                    continue;
-                }
+                    continue; // NO
+                } // ELSE IF
 
                 if (cap)
                 {
